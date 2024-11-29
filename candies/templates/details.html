@@ -1,0 +1,17 @@
+
+    {% extends "master.html" %}
+
+    {% block title %}
+    Details about {{ mycandy.name }}
+    {% endblock %}
+    
+    {% block content %}
+        <h1>{{ mycandy.name }}</h1>
+
+        <p>Type: {{ mycandy.type}}</p>
+
+        <p>Rating: {{ mycandy.rating }}</p>
+
+        <p>Back to <a href="/candies/">Candies</a></p>    
+    
+    {%  endblock %}
