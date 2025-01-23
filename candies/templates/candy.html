@@ -12,6 +12,17 @@
         <li><a href="details/{{ x.id }}">Select</a> Name: {{ x.name }} Type:{{ x.type }}</li>
       {% endfor %}
     </ul>
+
+  <h2>Add new Candy</h2>
+  <form action = "addcandy" method = "POST">
+    {% csrf_token %}
+    <input type = 'text' name = 'name'>
+    <h3>Type of Candy</h3>
+    <input type = 'text' name = 'candytype'><br>
+    <h3>Ratings</h3>
+    <input type = 'number' name = 'rating'><br>
+    <button>Submit</button>
+</form>
   
   
   {% endblock %}

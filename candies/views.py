@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import loader
 from .models import Candy
@@ -22,4 +22,16 @@ def details(request, id):
 def main(request):
     template = loader.get_template('main.html')
     return HttpResponse(template.render())
+
+def addcandy(request):
+    
+        namecandy = request.POST["name"]
+        typecandy = request.POST["candytype"]
+        ratingcandy = request.POST['rating']
+
+        print(namecandy)
+
+        Candy.objects.create(name = namecandy, type = typecandy, rating = ratingcandy)
+
+        return redirect("/")
     
