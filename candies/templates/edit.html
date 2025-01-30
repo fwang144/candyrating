@@ -1,0 +1,21 @@
+{% extends "master.html" %}
+
+{% block title %}
+Edit Candy
+{% endblock %}
+
+{% block content %}
+
+    <h2>Edit Candy</h2>
+    <form action = "/candies/editprocess/{{mycandy.id}}" method = "POST">
+      {% csrf_token %}
+      <input type = 'text' name = 'name' value="{{ mycandy.name }}">
+      <h3>Type of Candy</h3>
+      <input type = 'text' name = 'candytype' value="{{ mycandy.type}}"><br>
+      <h3>Ratings</h3>
+      <input type = 'number' name = 'rating' value = "{{ mycandy.rating }}"><br>
+      <button>Submit</button>
+  </form>
+      
+
+{%  endblock %}

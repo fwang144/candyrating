@@ -15,7 +15,7 @@ def details(request, id):
     mycandy = Candy.objects.get(id=id)
     template = loader.get_template('details.html')
     context = {
-    'mycandy': mycandy,
+        'mycandy': mycandy,
     }
     return HttpResponse(template.render(context, request))
 
@@ -24,14 +24,33 @@ def main(request):
     return HttpResponse(template.render())
 
 def addcandy(request):
-    
-        namecandy = request.POST["name"]
-        typecandy = request.POST["candytype"]
-        ratingcandy = request.POST['rating']
+    namecandy = request.POST["name"]
+    typecandy = request.POST["candytype"]
+    ratingcandy = request.POST['rating']
+    Candy.objects.create(name = namecandy, type = typecandy, rating = ratingcandy)
+    return redirect("/")
 
-        print(namecandy)
+def editcandy(request, id):
+    mycandy = Candy.objects.get(id=id)
+    template = loader.get_template('edit.html')
+    context = {
+        "mycandy": mycandy,
+    }
 
-        Candy.objects.create(name = namecandy, type = typecandy, rating = ratingcandy)
+    return HttpResponse(template.render(context, request))
 
-        return redirect("/")
+def editcandyprocess(request, id):
+    oldcandy = Candy.objects.get(id=id)
+    oldcandy.name = request.POST["name"]
+    oldcandy.type = request.POST["candytype"]
+    oldcandy.rating = request.POST["rating"]
+    oldcandy.save()
+    return redirect('/')
+
+def delete(request, id):
+    mycandy = Candy.objects.get(id=id)
+    mycandy.delete()
+    return redirect('/')
+
+     
     

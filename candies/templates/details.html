@@ -12,6 +12,15 @@
 
         <p>Rating: {{ mycandy.rating }}</p>
 
+        <a href="/candies/edit/{{mycandy.id}}">Edit</a>
+        
+        
+        <form action="delete/{{mycandy.id}}" method="post">
+            {% csrf_token %}
+            <button>Delete</button>
+        </form>
+        
+
         <p>Back to <a href="/candies/">Candies</a></p>    
     
     {%  endblock %}
