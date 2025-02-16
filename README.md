@@ -1,3 +1,6 @@
+Overall Summary
+The project aims to create a database project with the application of Create, Read, Update, and Delete. Also, to perform the Unit Testing Project to see how database project work.
+
 To start looking into my project or test, follow a Python Django Environment.
   1. Open Terminal
   2. Type "python --version" to check the version and see if you installed Python.
